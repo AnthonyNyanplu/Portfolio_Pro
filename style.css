@@ -1,0 +1,820 @@
+
+/* Layer 1: Background Image */
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-image: url('Hd1.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(0.60) blur(0.15px) saturate(1.08);
+}
+/* :root variables for consistent, professional palette and spacing */
+:root {
+  --surface: #0f1724; /* deep navy */
+  --muted: #6b7280;     /* subdued gray */
+  --accent: #0066cc;    /* professional blue */
+  --accent-2: #00bfa6;  /* teal accent for subtle highlights */
+  --card: #ffffff;
+  --card-ghost: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --radius: 10px;
+  --max-width: 1100px;
+  --type-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+/* Base sizing to make zoom predictable; use rem-based layout for consistent scaling */
+html {
+  font-size: 16px; /* users can zoom; rem-based sizing keeps proportions */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Responsive typographic scale */
+h1 { font-size: clamp(1.6rem, 2.6vw, 2.4rem); margin: 0 0 0.5rem 0; }
+h2 { font-size: clamp(1.25rem, 2.0vw, 1.6rem); margin: 0 0 0.5rem 0; }
+h3 { font-size: clamp(1.05rem, 1.6vw, 1.1rem); margin: 0; }
+
+/* Make images and svgs scale predictably */
+img, svg { max-width: 100%; height: auto; display: block; }
+
+.header-background img {
+  display: none;
+}
+
+/* Layer 2: Header Content */
+.header-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 0;
+}
+
+/* Navigation Styles */
+nav a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+nav a:hover {
+  color: rgb(246, 65, 92);
+  background-color: transparent;
+  text-decoration: transparent;
+}
+
+/* Improve focus styles for keyboard users */
+nav a:focus {
+  outline: 3px solid rgba(0,102,204,0.18);
+  outline-offset: 3px;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  background: transparent;
+  border: 2px solid #0078D4;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 2px 8px;
+  transition: border-color 0.2s;
+}
+.dark-mode-toggle:hover {
+  border-color: #73aad3;
+}
+
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+/* PROFESSIONAL EXPERIENCE */
+#experience {
+  /* Reduced vertical margin to tighten spacing to next section */
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo Features */
+.company-logos-row img {
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
+  filter: grayscale(40%) brightness(0.95) drop-shadow(0 2px 6px rgba(0,0,0,0.08));
+  border-radius: 8px;
+  cursor: pointer;
+}
+.company-logos-row img:hover {
+  transform: scale(1.13) rotate(-2deg);
+  filter: grayscale(0%) brightness(1.1) drop-shadow(0 6px 18px rgba(0,0,0,0.18));
+  box-shadow: 0 4px 18px rgba(0, 123, 255, 0.18), 0 1.5px 8px rgba(0,0,0,0.10);
+  z-index: 2;
+}
+
+.experience-bg-wrapper {
+  position: relative;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  /* Black, slightly transparent to preserve depth while being professional */
+  background-color: rgba(0, 123, 255, 0.18);
+  color: #fff;
+  padding: 2.25rem;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 12px rgba(238, 237, 237, 0.913);
+  /* Each background image can be positioned and sized individually */
+  /* background images removed from wrapper — moved to Gallery section */
+  background-image: none;
+  background-size: none;
+  background-position: none;
+  background-repeat: none;
+  border-radius: 10px;
+  overflow: visible;
+  backdrop-filter: blur(2px);
+  margin-top: 2rem;
+}
+
+/* Gallery for experience assets (uses former bg-wrapper images) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.gallery img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.35);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.gallery img:hover, .gallery img:focus {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(2,6,23,0.6);
+}
+
+/* Gallery grid used in HTML: vertical stacked, larger thumbnails */
+.gallery-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem 1.25rem;
+  padding: 0.5rem 0;
+}
+.gallery-grid img {
+  /* present larger horizontal thumbnails and override inline sizes */
+  max-width: clamp(220px, 28vw, 520px) !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: cover;
+  display: inline-block;
+  margin: 0.25rem 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 36px rgba(2,6,23,0.45);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.gallery-grid img:hover, .gallery-grid img:focus {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(2,6,23,0.6);
+}
+
+@media (max-width: 700px) {
+  .gallery-grid { flex-direction: column; }
+  .gallery-grid img { max-width: 92% !important; }
+}
+.experience-list {
+  position: relative;
+  width: 100%;
+  margin: 3rem 0;
+  padding: 2rem 0;
+  /* use a two-column grid to align left/right cards neatly */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 4rem;
+}
+
+/* decorative center line for timeline */
+.experience-list::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 1rem;
+  bottom: 1rem;
+  width: 3px;
+  background: rgba(238, 237, 237, 0.913);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.experience-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(162, 171, 227, 0.415), rgba(98, 112, 201, 0.415));
+  padding: 1.5rem 2rem;
+  margin: 0;
+  border-radius: 8px;
+  border: 1px solid rgba(254, 254, 254, 0.678);
+  box-shadow: 0 2px 4px rgba(238, 237, 237, 0.913);
+  z-index: 2;
+  max-width: 520px;
+}
+.experience-card:nth-child(odd) {
+  grid-column: 1;
+  justify-self: end;
+}
+.experience-card:nth-child(even) {
+  grid-column: 2;
+  justify-self: start;
+}
+@media (max-width: 900px) {
+  .experience-list {
+    display: block;
+    padding: 1rem 0;
+  }
+  .experience-card, .experience-card:nth-child(odd), .experience-card:nth-child(even) {
+    width: calc(100% - 2rem);
+    margin: 1.25rem auto;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+  .experience-list::before {
+    display: none;
+  }
+}
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.exp-header img {
+  width: 50px;
+  height: auto;
+}
+.exp-header h3 {
+  margin: 0;
+}
+.exp-header p {
+  margin: 0.25rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+body {
+  font-family: var(--type-sans);
+  margin: 0;
+  padding: 0;
+  color: #e6eef8;
+  background: linear-gradient(180deg, #041026 0%, #071025 60%);
+  transition: background 0.3s, color 0.3s;
+}
+header {
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+nav a {
+  color: rgba(255,255,255,0.88);
+  margin: 0 1rem;
+  text-decoration: none;
+}
+nav .dark-mode-toggle {
+  margin-left: 1rem;
+}
+main {
+  padding: 2rem 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.project-card:focus-within {
+  box-shadow: 0 18px 48px rgba(2,6,23,0.6);
+}
+.resume-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  margin-top: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,102,204,0.12);
+}
+
+#contact {
+  margin-top: 2.5rem;
+}
+
+form input, form textarea {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+form button {
+  padding: 0.5rem 1rem;
+}
+footer {
+  text-align: center;
+  background: transparent;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+}
+.dark-mode {
+  background: #0b1220;
+  color: #e6eef8;
+}
+.dark-mode header, .dark-mode .project-card, .dark-mode footer {
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+}
+.dark-mode .resume-button {
+  background: #eee;
+  color: #111;
+}
+@media (max-width: 768px) {
+  .project-card {
+    flex: 1 1 100%;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* =========================================================
+   PROJECT SECTION - CLEAN VISUAL CASE STUDY STYLE
+   Modify colors/sizes from the variables below.
+   ========================================================= */
+
+#projects {
+  --project-bg: rgba(255, 255, 255, 0.055);
+  --project-panel: rgba(4, 16, 38, 0.58);
+  --project-border: rgba(255, 255, 255, 0.10);
+  --project-text: rgba(230, 238, 248, 0.82);
+  --project-muted: rgba(230, 238, 248, 0.68);
+  --project-radius: 18px;
+  --project-gap: 1rem;
+
+  /* Reduce bottom spacing before the About section */
+  margin: 3rem 0 1rem;
+  padding: 2rem 0 0.75rem;
+}
+
+/* Section heading */
+
+#projects .section-heading {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 2rem;
+}
+
+/* Projects Title heading */
+#projects .eyebrow {
+  color: var(--accent-2);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.45rem;
+}
+
+.eyebrowH {
+  color: var(--accent-2);
+  font-size: 1.20rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  margin: 0 0 0.45rem;
+}
+
+#projects .section-lead {
+  color: var(--project-text);
+  line-height: 1.7;
+  margin: 0.75rem auto 0;
+}
+
+/* Ensure emphasis under Professional Experience matches eyebrowH color */
+#experience em {
+  color: var(--accent-2);
+}
+
+/* Filter buttons */
+#projects .filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 1.5rem auto 2rem;
+}
+
+#projects .filter-buttons button,
+.resume-filter-button {
+  border: 1px solid var(--project-border);
+  color: #e6eef8;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#projects .filter-buttons button:hover,
+#projects .filter-buttons button:focus,
+#projects .filter-buttons button.active,
+.resume-filter-button:hover,
+.resume-filter-button:focus {
+  background: linear-gradient(135deg, rgba(204, 109, 0, 0.45), rgba(0, 191, 166, 0.28));
+  border-color: rgba(0, 191, 166, 0.55);
+  transform: translateY(-2px);
+}
+
+/* Main project cards */
+
+#projects .project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+#projects .project-card {
+  background:
+    radial-gradient(circle at top left, rgba(0, 191, 166, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  border: 1px solid var(--project-border);
+  border-radius: var(--project-radius);
+  padding: clamp(1rem, 2vw, 1.6rem);
+  box-shadow: 0 16px 45px rgba(2, 6, 23, 0.42);
+  overflow: visible;
+}
+
+#projects .project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 191, 166, 0.35);
+  box-shadow: 0 20px 55px rgba(2, 6, 23, 0.65);
+}
+
+/* Two-column project layout */
+
+#projects .project-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(320px, 1.25fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Visual media */
+
+#projects figure {
+  margin: 0;
+}
+
+#projects .project-hero-media,
+#projects .project-media-grid figure,
+#projects .project-video-card,
+#projects .visual-diagram-card {
+  background: var(--project-panel);
+  border: 1px solid var(--project-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.22s ease;
+}
+
+#projects .project-hero-media:hover,
+#projects .project-media-grid figure:hover,
+#projects .visual-diagram-card:hover {
+  box-shadow: 0 20px 48px rgba(2, 6, 23, 0.6);
+}
+
+#projects .project-hero-media img,
+#projects .project-hero-media video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 760px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+#projects .project-hero-media video {
+  aspect-ratio: 16 / 9;
+}
+
+#projects figcaption,
+#projects .project-video-card p {
+  padding: 0.7rem 0.85rem;
+  margin: 0;
+  color: var(--project-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+#projects .project-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+#projects .project-media-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+#projects .project-media-grid figure:last-child {
+  grid-column: span 2;
+}
+
+/* Project 2 left-side media follows the same layout rhythm as Project 1 */
+#projects .project-card.analog.pcb .project-media-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#projects .project-card.analog.pcb .project-media-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+#projects .project-card.analog.pcb .project-media-grid .p2-bom-card {
+  grid-column: span 2;
+}
+
+#projects .project-card.analog.pcb .project-content-column .visual-diagram-card h4 {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+#projects .project-card.analog.pcb .project-content-column .visual-diagram-card img {
+  width: 100%;
+  max-height: none;
+  box-sizing: border-box;
+}
+
+#projects .project-card.analog.pcb .project-content-column .p2-compact-diagram-card {
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.7rem;
+}
+
+#projects .project-card.analog.pcb .project-content-column .p2-compact-diagram-card img {
+  max-height: 300px;
+  object-fit: contain;
+}
+
+#projects .project-video-card {
+  margin-top: 0.75rem;
+}
+
+#projects .project-video-card video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #020617;
+}
+
+/* Text content */
+
+#projects .project-topline {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+#projects .project-card h3 {
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+  line-height: 1.25;
+  margin: 0;
+}
+
+#projects .project-summary {
+  color: var(--project-text);
+  line-height: 1.7;
+  margin: 0 0 1.1rem;
+}
+
+/* Problem-Solution-Result and details cards */
+
+#projects .psr-grid,
+#projects .details-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+#projects .psr-grid,
+#projects .details-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1rem 0;
+}
+
+#projects .psr-grid div,
+#projects .details-grid div {
+  position: relative;
+  background: var(--project-panel);
+  border: 1px solid var(--project-border);
+  border-radius: 14px;
+  padding: 0.9rem;
+}
+
+#projects .psr-grid div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 102, 204, 0.94);
+  font-size: 1.2rem;
+  font-weight: 900;
+  z-index: 1;
+}
+
+#projects .psr-grid div:nth-child(1) {
+    background: rgba(255, 159, 67, 0.12);
+  border-color: rgba(255, 159, 67, 0.35);
+}
+
+#projects .psr-grid div:nth-child(2) {
+  background: rgba(0, 191, 166, 0.14);
+  border-color: rgba(0, 191, 166, 0.35);
+}
+
+#projects .psr-grid div:nth-child(3) {
+  background: rgba(0, 123, 255, 0.15);
+  border-color: rgba(0, 123, 255, 0.35);
+}
+
+#projects h4 {
+  display: block;
+  color: #ffffff;
+  margin: 0 0 0.35rem;
+}
+
+#projects .psr-grid p,
+#projects .check-list {
+  color: var(--project-muted);
+  line-height: 1.55;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* Diagram cards */
+
+#projects .visual-diagram-card {
+  margin: 1rem 0;
+  padding: 0.9rem;
+}
+
+#projects .visual-diagram-card img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 330px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 0.4rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+#projects .visual-diagram-card img:hover,
+#projects .visual-diagram-card img:focus {
+  transform: scale(1.02);
+  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.45);
+}
+
+/* Side-by-side diagram pair inside visual-diagram-card */
+#projects .diagram-pair {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+#projects .diagram-pair figure {
+  flex: 1 1 48%;
+  margin: 0;
+}
+
+#projects .diagram-pair figure h4 {
+  margin: 0 0 0.5rem;
+}
+
+/* Expandable details */
+
+#projects .project-details {
+  margin: 1rem 0;
+  border-radius: 14px;
+  border: 1px solid var(--project-border);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+#projects .project-details summary {
+  cursor: pointer;
+  padding: 0.9rem 1rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+#projects .details-grid {
+  padding: 0 1rem 1rem;
+}
+
+#projects .check-list {
+  padding-left: 1.15rem;
+}
+
+#projects .check-list li::marker {
+  color: var(--accent-2);
+}
+
+/* Skill badges */
+
+#projects .skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#projects .project-content-column > h4 {
+  margin-top: 1.15rem;
+  margin-bottom: 0;
+}
+
+#projects .project-content-column > .skill-badges {
+  margin-top: 0.55rem;
+}
+
+#projects .project-content-column > .skill-badges + h4 {
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+}
+
+#projects .project-visual-column > h4 {
+  margin-top: 1.15rem;
+  margin-bottom: 0;
+}
+
+#projects .project-visual-column > .skill-badges {
+  margin-top: 0.55rem;
+}
+
+#projects .skill-badges span {
+  border-radius: 999px;
+  padding: 0.42rem 0.7rem;
+  background: rgba(0, 191, 166, 0.12);
+  color: rgba(230, 238, 248, 0.92);
+  border: 1px solid rgba(0, 191, 166, 0.18);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+#projects .no-results {
+  text-align: center;
+  color: var(--project-muted);
+  margin-top: 1.2rem;
+}
+
+/* Mobile layout */
+
+@media (max-width: 980px) {
+  #projects .project-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #projects .project-hero-media img {
+    height: auto;
+    max-height: 460px;
+  }
+}
+
+@media (max-width: 700px) {
+  #projects .psr-grid,
+  #projects .details-grid,
+  #projects .project-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #projects .psr-grid div:not(:last-child)::after {
+    display: none;
+  }
+
+  #projects .project-topline {
+    flex-direction: column;
+  }
+
+  #projects .project-card.analog.pcb .project-media-grid .p2-bom-card {
+    width: 100%;
+  }
+}
