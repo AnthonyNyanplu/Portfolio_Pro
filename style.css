@@ -286,7 +286,7 @@ nav .dark-mode-toggle {
   margin-left: 1rem;
 }
 main {
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 0.75rem;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -305,8 +305,8 @@ form button {
 footer {
   text-align: center;
   background: transparent;
-  padding: 1.5rem 1rem;
-  margin-top: 3rem;
+  padding: 0.85rem 1rem 1.25rem;
+  margin-top: 0.75rem;
 }
 .dark-mode {
   background: #0b1220;
