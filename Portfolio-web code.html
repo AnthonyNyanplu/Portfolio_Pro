@@ -295,8 +295,8 @@
             </figure>
 
             <figure class="p2-bom-card">
-              <img src="P2_BOM.png" alt="Bill of materials for ACS712 signal conditioning PCB">
-              <figcaption>Bill of Materials</figcaption>
+              <img src="P2_OSC3.JPG" alt="Testing and Validation for ACS712 signal conditioning PCB">
+              <figcaption>Bench validation setup using oscilloscope measurements to confirm waveform shape, offset, and ADC-ready signal range.</figcaption>
             </figure>
           </div>
 
@@ -322,7 +322,8 @@
 
           <p class="project-summary">
               This project involved designing and building a current-sensing signal conditioning board using the ACS712 Hall-effect current sensor. 
-              The board converts an AC current signal into a DSP-compatible 0 - 3 V voltage signal, filters noise, and prepares the waveform for ADC sampling and software analysis.
+              The board converts an AC current signal into a DSP-compatible 0 - 3 V voltage signal, filters noise, and prepares the waveform for ADC sampling and software analysis. 
+              The final bench validation used oscilloscope captures, including the P2_OSC3 test setup, to verify the conditioned signal before DSP/ADC integration.
           </p>
 
           <div class="psr-grid">
@@ -336,7 +337,7 @@
             </div>
             <div>
               <h4>Result</h4>
-              <p>Verified a cleaner ADC-compatible output waveform using oscilloscope measurements.</p>
+              <p>Verified an ADC-compatible waveform with cleaner output behavior, stable offset, and documented oscilloscope validation.</p>
             </div>
           </div>
 
@@ -360,6 +361,13 @@
             <span>Multimeter</span>
             <span>Soldering Iron</span>
             <span>DSP / ADC Interface</span>
+          </div>
+
+          <div class="project-validation-note">
+            <h4>Validation Focus</h4>
+            <p>
+              Confirmed the signal-conditioning path from sensor output through filtering and scaling, then compared the oscilloscope waveform against the expected ADC input range.
+            </p>
           </div>
         </div>
       </div>
@@ -453,11 +461,21 @@
     <!-- About Section -->
     <section id="about">
       <h2 class="eyebrowH">About Me</h2>
-      <p>
-        I am an Electrical Engineering Technology professional with hands-on experience in medical device manufacturing, automation, troubleshooting, and engineering design. 
-        My background has taught me to approach problems with both technical discipline and practical judgment: understand how the system works, find the root cause, improve the process, and build solutions that are reliable, testable, and easy to support. 
-        Through projects in embedded systems, circuit design, PLC automation, CAD modeling, and test development, I enjoy turning ideas into working devices while continuing to grow toward R&D and Electronic Engineering roles.
-      </p>
+      <div class="about-card">
+        <p>
+          I am an Electrical Engineering Technology professional with hands-on experience in medical device manufacturing, automation, troubleshooting, and engineering design. My background has taught me to approach engineering challenges with technical discipline and a practical understanding of how systems, hardware, and production processes work together.
+        </p>
+        <p>
+          I focus on finding root causes, improving processes, and building solutions that are reliable, testable, and easy to validate. Through projects in embedded systems, circuit design, PLC automation, CAD modeling, and test development, I enjoy turning conceptual ideas into working devices and prototypes while continuing to grow toward R&amp;D and Electronic Engineering roles.
+        </p>
+        <div class="about-highlights" aria-label="Engineering focus areas">
+          <span>Embedded Systems</span>
+          <span>PCB Design</span>
+          <span>PLC Automation</span>
+          <span>CAD Modeling</span>
+          <span>Test Validation</span>
+        </div>
+      </div>
     </section>
   </main>
   <!-- Footer -->
